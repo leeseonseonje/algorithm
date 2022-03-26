@@ -10,21 +10,18 @@ public class Sleep {
     }
 
     public void wakeUp() {
-        if (isSleepStatus()) {
-            setStatus(SleepStatus.WAKE);
+        if (alreadyWake()) {
+            return;
         }
+        wake();
         System.out.println("기상");
     }
 
-    private void setStatus(SleepStatus status) {
-        this.status = status;
+    private void wake() {
+        this.status = SleepStatus.WAKE;
     }
 
-    private boolean isSleepStatus() {
-        return status == SleepStatus.SLEEP;
-    }
-
-    public SleepStatus getStatus() {
-        return status;
+    private boolean alreadyWake() {
+        return status == SleepStatus.WAKE;
     }
 }
