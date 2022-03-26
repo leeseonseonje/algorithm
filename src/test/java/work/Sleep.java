@@ -11,6 +11,7 @@ public class Sleep {
 
     public void wakeUp() {
         if (alreadyWake()) {
+            System.out.println("이미 기상");
             return;
         }
         wake();

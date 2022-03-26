@@ -2,11 +2,12 @@ package work;
 
 public class Seon {
 
-    private WorkStatus status = WorkStatus.PREPARE;
+    private WorkStatus status;
     private Sleep sleep;
     private ReadyForGoToWork ready;
 
-    public Seon(Sleep sleep, ReadyForGoToWork ready) {
+    public Seon(WorkStatus status, Sleep sleep, ReadyForGoToWork ready) {
+        this.status = status;
         this.sleep = sleep;
         this.ready = ready;
     }
@@ -16,17 +17,16 @@ public class Seon {
             return status;
         }
         sleep.wakeUp();
-        WorkStatus status = ready.action();
-        System.out.println("출근");
-        return readyComplete(status);
+        return readyComplete();
     }
 
     private boolean isReadyCompletion() {
         return status == WorkStatus.COMPLETION;
     }
 
-    private WorkStatus readyComplete(WorkStatus status) {
-        this.status = status;
-        return status;
+    private WorkStatus readyComplete() {
+        this.status = ready.action();
+        System.out.println("출근");
+        return this.status;
     }
 }
