@@ -22,6 +22,7 @@ public class Level3 {
 
         List<Integer> result = rank(genres, plays, genreRank, songId);
 
+        result.stream().mapToInt(r -> r).toArray();
         for (Integer integer : result) {
             System.out.println(integer);
         }
